@@ -20,6 +20,12 @@
       margin: 40px auto;
       box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
+    #letter 
+    p {
+      text-align: left;
+      line-height: 1.7;
+      font-size: 16px;
+    }
     img {
       width: 100%;
       border-radius: 15px;
@@ -66,6 +72,35 @@
     <button class="yes" onclick="yesClicked()">Yes 💖</button>
     <button class="no" id="noBtn">No 🙈</button>
   </div>
+<!-- Love Letter Section -->
+<div class="card hidden" id="letter">
+  <h1>My Letter to You 💌</h1>
+
+  <p>
+    From the moment we first met, I never expected you to become someone so
+    important in my life. What started as simple conversations slowly turned
+    into something I now cherish deeply.
+  </p>
+
+  <p>
+    Through every laugh, late-night talk, and quiet moment, you’ve shown me
+    warmth, patience, and a kind of love that feels safe and exciting at the
+    same time. You make ordinary days feel special just by being in them.
+  </p>
+
+  <p>
+    This Valentine’s Day isn’t just about flowers or dates—it’s about choosing
+    each other, appreciating how far we’ve come, and looking forward to the
+    memories we’ll keep creating together.
+  </p>
+
+  <p>
+    Thank you for being my 1st Valentine. Thank you for being you, for being here, and for letting me be part of your
+    life. I can’t wait to spend this day with you—and many more after it. 💕
+  </p>
+
+  <button class="yes" onclick="showItinerary()">Continue 💖</button>
+</div>
 
   <!-- Itinerary Page (hidden initially) -->
   <div class="itinerary hidden" id="itinerary">
@@ -95,25 +130,21 @@
 
     // Yes button clicked
     function yesClicked() {
-      // Confetti
-      confetti({
-        particleCount: 200,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
+    confetti({
+      particleCount: 200,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
 
-      // Hide Valentine card
-      document.getElementById('card').classList.add('hidden');
+    document.getElementById('card').classList.add('hidden');
+    document.getElementById('letter').classList.remove('hidden');
+  }
 
-      // Show itinerary
-      document.getElementById('itinerary').classList.remove('hidden');
-
-      // Optional: open WhatsApp / iMessage
-      const message = encodeURIComponent("Yes! I would love to spend Valentine's Day with you 💕");
-      // WhatsApp example
-      // window.open(`https://wa.me/60123456789?text=${message}`, '_blank');
-    }
-  </script>
+  function showItinerary() {
+    document.getElementById('letter').classList.add('hidden');
+    document.getElementById('itinerary').classList.remove('hidden');
+  }
+</script>
 
 </body>
 </html>
