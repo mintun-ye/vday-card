@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💖</title>
+  <link href="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #ffe6f0;
+      text-align: center;
+      margin: 0;
+      padding: 40px;
+    }
+    .card, .itinerary {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 500px;
+      margin: 40px auto;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    img {
+      width: 100%;
+      border-radius: 15px;
+    }
+    h1 {
+      color: #e60073;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 18px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .yes {
+      background-color: #ff4d88;
+      color: white;
+    }
+    .no {
+      background-color: #ccc;
+    }
+    .hidden { display: none; }
+
+    .itinerary img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+    .itinerary h2 {
+      color: #ff4d88;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Valentine Card -->
+  <div class="card" id="card">
+    <img src="photo.jpg" alt="Valentine photo">
+    <h1>Will you be my Valentine? 💘</h1>
+    <p>If you say yes, I have a special day planned for us! 😘</p>
+    <button class="yes" onclick="yesClicked()">Yes 💖</button>
+    <button class="no" id="noBtn">No 🙈</button>
+  </div>
+
+  <!-- Itinerary Page (hidden initially) -->
+  <div class="itinerary hidden" id="itinerary">
+    <h1>Our Valentine’s Day Itinerary 💕</h1>
+
+    <h2>8:00 AM - Taman Botani Negara Shah Alam, Selangor</h2>
+    <p>Activities: Walking in the park, nature sightseeing, bicycle ride, fishing, mini zoo 🐰🌳</p>
+    <img src="taman.jpg" alt="Taman Botani">
+
+    <h2>12:30 PM - Lunch at Thai Chicken Rice Station, Nu Sentral 🍽️</h2>
+    <img src="lunch.jpg" alt="Lunch Venue">
+
+    <h2>7:30 PM - Dinner at Envi Skydinning, Menara TA One 🌃</h2>
+    <img src="dinner.jpg" alt="Dinner Venue">
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    // No button moves away
+    const noBtn = document.getElementById('noBtn');
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.random() * 70; // percentage
+      const y = Math.random() * 50;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    // Yes button clicked
+    function yesClicked() {
+      // Confetti
+      confetti({
+        particleCount: 200,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
+
+      // Hide Valentine card
+      document.getElementById('card').classList.add('hidden');
+
+      // Show itinerary
+      document.getElementById('itinerary').classList.remove('hidden');
+
+      // Optional: open WhatsApp / iMessage
+      const message = encodeURIComponent("Yes! I would love to spend Valentine's Day with you 💕");
+      // WhatsApp example
+      // window.open(`https://wa.me/60123456789?text=${message}`, '_blank');
+    }
+  </script>
+
+</body>
+</html>
